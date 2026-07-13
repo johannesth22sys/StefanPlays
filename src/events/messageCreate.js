@@ -135,6 +135,7 @@ async function handleCountingGame(message, client) {
     const invalidAttempt = !validCount || message.author.id === config.lastUserId;
 
     if (invalidAttempt) {
+      await message.react("❌"); // rood kruis
       await message.delete().catch(() => {});
       await saveCountingGameConfig(client, message.guild.id, {
         ...config,
